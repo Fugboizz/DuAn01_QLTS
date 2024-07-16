@@ -77,32 +77,40 @@ public class repoChiTietSanPham implements InterfaceRepoChiTietSanPham {
         StringBuilder sqlBuilder = new StringBuilder("SELECT * FROM v_ChiTiet WHERE 1=1 ");
         List<Object> params = new ArrayList<>();
 
-        if (sp.isGiamGia()) {
-            sqlBuilder.append("AND IDGiamGia IN (SELECT IDGiamGia FROM GiamGia WHERE TrangThai = ?)");
-            params.add("1");
-        }else if(!sp.isGiamGia()){
-            sqlBuilder.append("AND IDGiamGia IN (SELECT IDGiamGia FROM GiamGia WHERE TrangThai = ?)");
-            params.add("0");
-        }
+        int defaultIntValue = -1;
 
-        if (sp.isTrangThai()) {
+    if (sp.getGiamGia() != defaultIntValue) {
+        if (sp.getGiamGia() == 1) {
+            sqlBuilder.append(" AND IDGiamGia IN (SELECT IDGiamGia FROM GiamGia WHERE TrangThai = ?)");
+            params.add(true);
+        } else if (sp.getGiamGia() == 0) {
+            sqlBuilder.append(" AND IDGiamGia IN (SELECT IDGiamGia FROM GiamGia WHERE TrangThai = ?)");
+            params.add(false);
+        }
+    }
+
+    if (sp.getTrangThai() != defaultIntValue) {
+        if (sp.getTrangThai() == 1) {
             sqlBuilder.append(" AND SoLuongTonKho > 0");
-        }else if (!sp.isTrangThai()) {
+        } else if (sp.getTrangThai() == 0) {
             sqlBuilder.append(" AND SoLuongTonKho = 0");
         }
+    }
 
-        if (sp.isGioiTinh()) {
+    if (sp.getGioiTinh() != defaultIntValue) {
+        if (sp.getGioiTinh() == 1) {
             sqlBuilder.append(" AND GioiTinh = ?");
             params.add("Nam");
-        } else if(!sp.isGioiTinh()){
+        } else if (sp.getGioiTinh() == 0) {
             sqlBuilder.append(" AND GioiTinh = ?");
             params.add("Nữ");
         }
+    }
 
-        if (sp.getSanPham() != null && !sp.getSanPham().isEmpty()) {
-            sqlBuilder.append(" AND IDSanPham IN (SELECT IDSanPham FROM SanPham WHERE TenSanPham LIKE ?)");
-            params.add("%" + sp.getSanPham() + "%");
-        }
+    if (sp.getSanPham() != null && !sp.getSanPham().isEmpty()) {
+        sqlBuilder.append(" AND IDSanPham IN (SELECT IDSanPham FROM SanPham WHERE TenSanPham LIKE ?)");
+        params.add("%" + sp.getSanPham() + "%");
+    }
         String sql = sqlBuilder.toString();
         List<ChiTietSanPham> listctsp = new ArrayList<>();
 
