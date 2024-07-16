@@ -21,6 +21,7 @@ public class DangNhapView extends javax.swing.JFrame {
         dn.customizeButton(btn_DangNhap, 30);
         lbl_enable.setVisible(false);
         txt_MatKhau.setEchoChar((char) 8226);
+        
     }
 
 //    public boolean checkRole() {
