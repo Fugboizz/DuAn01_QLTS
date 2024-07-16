@@ -5,12 +5,14 @@
 package view.sanphamdialog;
 
 import java.awt.Color;
+import service.sanpham.SanPhamService;
 import view.until.SanPhamUntil;
 import view.until.ViewDialog;
 
 public final class SuaSanPhamDialog extends javax.swing.JDialog {
 
     private SanPhamUntil spu = new SanPhamUntil();
+    private SanPhamService sps = new SanPhamService();
     ViewDialog vd = new ViewDialog();
 
     public SuaSanPhamDialog(java.awt.Frame parent, boolean modal) {
@@ -38,7 +40,8 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
         spu.addXuatXu(cbo_XuatXu);
         spu.addKiemDinh(cbo_KiemDinh);
     }
-    void lamMoi(){
+
+    void lamMoi() {
         spu.lamMoiText(txt_GiaBan);
         spu.lamMoiText(txt_TenTrangSuc);
         spu.lamMoiText(txt_TrongLuong);
@@ -51,6 +54,7 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
         spu.lamMoiCbo(cbo_XuatXu);
         spu.lamMoiCbo(cbo_LoaiDa);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -346,6 +350,11 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
         btn_ChonAnh.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         btn_ChonAnh.setText("Chọn Ảnh");
         btn_ChonAnh.setPreferredSize(new java.awt.Dimension(84, 30));
+        btn_ChonAnh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ChonAnhActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -424,6 +433,14 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         lamMoi();
     }//GEN-LAST:event_btn_LamMoiActionPerformed
+
+    private void btn_ChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ChonAnhActionPerformed
+        // TODO add your handling code here:
+        sps.chonAnh(txt_Anh);
+        String link;
+        link = (String) txt_Anh.getClientProperty("imagepath");
+        System.out.println(link);
+    }//GEN-LAST:event_btn_ChonAnhActionPerformed
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,7 @@ package view.until;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import model.ChatLieu;
 import model.DaQuy;
@@ -99,5 +100,9 @@ public class SanPhamUntil implements SanPhamUntilInterface {
     @Override
     public void lamMoiGbo(ButtonGroup btr) {
         btr.clearSelection();
+    }
+        @Override
+    public void lamLabel(JLabel label) {
+        label.setIcon(null);
     }
 }
