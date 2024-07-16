@@ -16,5 +16,4 @@ public interface SanPhamInterface {
     public int creat();
     public int update();
     public int delete();
-   
 }
