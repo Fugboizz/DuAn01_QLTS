@@ -4,6 +4,7 @@
  */
 package view.until;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import model.ChatLieu;
@@ -93,5 +94,10 @@ public class SanPhamUntil implements SanPhamUntilInterface {
         for (MauSac ms : msr.getAll()) {
             cbo.addItem(ms.getChiTietMauSac());
         }
+    }
+
+    @Override
+    public void lamMoiGbo(ButtonGroup btr) {
+        btr.clearSelection();
     }
 }

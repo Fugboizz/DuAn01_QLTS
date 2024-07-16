@@ -4,6 +4,7 @@
  */
 package view.until;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -21,4 +22,5 @@ public interface SanPhamUntilInterface {
    public void addMauSac(JComboBox cbo);
    public void lamMoiText(JTextField text);
    public void lamMoiCbo(JComboBox cbo);
+   public void lamMoiGbo(ButtonGroup btr);
 }
