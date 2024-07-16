@@ -40,8 +40,7 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
         spu.addXuatXu(cbo_XuatXu);
         spu.addKiemDinh(cbo_KiemDinh);
     }
-
-    void lamMoi() {
+    void lamMoi(){
         spu.lamMoiText(txt_GiaBan);
         spu.lamMoiText(txt_TenTrangSuc);
         spu.lamMoiText(txt_TrongLuong);
@@ -53,8 +52,8 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
         spu.lamMoiCbo(cbo_LoaiDa);
         spu.lamMoiCbo(cbo_XuatXu);
         spu.lamMoiCbo(cbo_LoaiDa);
+        spu.lamLabel(txt_Anh);
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -435,7 +434,6 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_LamMoiActionPerformed
 
     private void btn_ChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ChonAnhActionPerformed
-        // TODO add your handling code here:
         sps.chonAnh(txt_Anh);
         String link;
         link = (String) txt_Anh.getClientProperty("imagepath");

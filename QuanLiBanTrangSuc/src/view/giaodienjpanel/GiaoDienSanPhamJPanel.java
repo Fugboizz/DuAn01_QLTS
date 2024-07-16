@@ -44,6 +44,7 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
 // Làm Mới buttongroup;
 
     void lamMoiGroup() {
+        txtTimKiem.setText("");
         spu.lamMoiGbo(buttonGroup1);
         spu.lamMoiGbo(buttonGroup2);
         spu.lamMoiGbo(buttonGroup3);
@@ -591,6 +592,8 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
     private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
         // TODO add your handling code here:
         lamMoiGroup();
+        ctList.clear();
+        fillToTable();
     }//GEN-LAST:event_btn_LamMoiActionPerformed
 
 

@@ -54,14 +54,14 @@ public class SanPhamUntil implements SanPhamUntilInterface {
     @Override
     public void addChatLieu(JComboBox cbo) {
         for (ChatLieu ct : ctr.getAll()) {
-            cbo.addItem(ct.getTenChatLieu() + " - " + ct.getIDMauSac().getChiTietMauSac());
+            cbo.addItem(ct.getTenChatLieu());
         }
     }
 
     @Override
     public void addTenDa(JComboBox cbo) {
         for (DaQuy dq : dqr.getAll()) {
-            cbo.addItem(dq.getTenDaQuy() + " - " + dq.getKichThuoc() + " mm");
+            cbo.addItem(dq.getTenDaQuy());
         }
 
     }
@@ -101,7 +101,8 @@ public class SanPhamUntil implements SanPhamUntilInterface {
     public void lamMoiGbo(ButtonGroup btr) {
         btr.clearSelection();
     }
-        @Override
+
+    @Override
     public void lamLabel(JLabel label) {
         label.setIcon(null);
     }

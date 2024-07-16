@@ -2,22 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package repository.Size;
+package repository.giamgia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.Size;
+import model.GiamGia;
 import until.jdbc;
 
 /**
  *
- * @author HUNGpYN
+ * @author WINDOWS10
  */
-public class SizeRepository implements SizeInterface {
+public class RepoGiamGia implements InterfaceRepoGiamGia {
 
     private Connection con = null;
     private PreparedStatement pre = null;
@@ -25,22 +24,24 @@ public class SizeRepository implements SizeInterface {
     private String sql = null;
 
     @Override
-    public List<Size> getAll() {
-        List size = new ArrayList<>();
-        sql = "select * from Size";
+    public List<GiamGia> getAll() {
+        List<GiamGia> list = new ArrayList<>();
+        sql = "Select * from GiamGia";
         try {
+            con = jdbc.getConnection();
             con = jdbc.getConnection();
             pre = con.prepareStatement(sql);
             res = pre.executeQuery();
             while (res.next()) {
-                Size s = new Size();
-                s.setIDSize(res.getString(1));
-                s.setSoSize(res.getInt(2));
-                s.setTrangThai(res.getBoolean(5));
-                size.add(s);
+                GiamGia gg = new GiamGia();
+                gg.setIDGIamGia(res.getString("IDGiamGia"));
+                gg.setTenMaGiamGia(res.getString("TenMaGiamGia"));
+                gg.setTyLeGiamGia(res.getFloat("TyLeGiamGia"));
+                gg.setTrangThai(res.getBoolean("TrangThai"));
+                list.add(gg);
             }
-            return size;
-        } catch (SQLException e) {
+            return list;
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -60,4 +61,5 @@ public class SizeRepository implements SizeInterface {
     public int delete() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }

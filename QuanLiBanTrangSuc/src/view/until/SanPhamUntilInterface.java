@@ -14,7 +14,6 @@ import javax.swing.JTextField;
  * @author HUNGpYN
  */
 public interface SanPhamUntilInterface {
-
     public void addSize(JComboBox cbo);
 
     public void addLoaiSanPham(JComboBox cbo);

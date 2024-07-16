@@ -28,20 +28,20 @@ public class ChatLieuRepository implements ChatLieuInterface {
     @Override
     public List<ChatLieu> getAll() {
         List<ChatLieu> list = new ArrayList<>();
-        sql = "select c.TenChatLieu , m.ChiTietMauSac  from ChatLieu as c\n"
-                + "join MauSac as m on c.IDMauSac = m.IDMauSac";
+        sql = "select * from ChatLieu";
         try {
             con = jdbc.getConnection();
             pre = con.prepareStatement(sql);
             res = pre.executeQuery();
             while (res.next()) {
-                ChatLieu kd = new ChatLieu();
-                MauSac m = new MauSac();
-                m.setChiTietMauSac(res.getString(2));
-                kd.setTenChatLieu(res.getString(1));
-                kd.setIDMauSac(m);
-                
-                list.add(kd);
+                MauSac ms = new MauSac();
+                ms.setIDMauSac(res.getString(4));
+                ChatLieu cl = new ChatLieu();
+                cl.setIDChatLieu(res.getString("IDChatLieu"));
+                cl.setTenChatLieu(res.getString(2));
+                cl.setTyLe(res.getFloat(3));
+                cl.setIDMauSac(ms);
+                list.add(cl);
             }
             return list;
         } catch (SQLException e) {

@@ -14,4 +14,5 @@ import model.GiaoDien.SanPham;
 public interface InterfaceRepoChiTietSanPham {
     public List<ChiTietSanPham> getAll();
     public List<ChiTietSanPham> getAllWithConditional (SanPham sp);
+    public int add(ChiTietSanPham ct);
 }

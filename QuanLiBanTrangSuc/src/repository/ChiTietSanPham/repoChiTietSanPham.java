@@ -79,38 +79,38 @@ public class repoChiTietSanPham implements InterfaceRepoChiTietSanPham {
 
         int defaultIntValue = -1;
 
-    if (sp.getGiamGia() != defaultIntValue) {
-        if (sp.getGiamGia() == 1) {
-            sqlBuilder.append(" AND IDGiamGia IN (SELECT IDGiamGia FROM GiamGia WHERE TrangThai = ?)");
-            params.add(true);
-        } else if (sp.getGiamGia() == 0) {
-            sqlBuilder.append(" AND IDGiamGia IN (SELECT IDGiamGia FROM GiamGia WHERE TrangThai = ?)");
-            params.add(false);
+        if (sp.getGiamGia() != defaultIntValue) {
+            if (sp.getGiamGia() == 1) {
+                sqlBuilder.append(" AND IDGiamGia IN (SELECT IDGiamGia FROM GiamGia WHERE TrangThai = ?)");
+                params.add(true);
+            } else if (sp.getGiamGia() == 0) {
+                sqlBuilder.append(" AND IDGiamGia IN (SELECT IDGiamGia FROM GiamGia WHERE TrangThai = ?)");
+                params.add(false);
+            }
         }
-    }
 
-    if (sp.getTrangThai() != defaultIntValue) {
-        if (sp.getTrangThai() == 1) {
-            sqlBuilder.append(" AND SoLuongTonKho > 0");
-        } else if (sp.getTrangThai() == 0) {
-            sqlBuilder.append(" AND SoLuongTonKho = 0");
+        if (sp.getTrangThai() != defaultIntValue) {
+            if (sp.getTrangThai() == 1) {
+                sqlBuilder.append(" AND SoLuongTonKho > 0");
+            } else if (sp.getTrangThai() == 0) {
+                sqlBuilder.append(" AND SoLuongTonKho = 0");
+            }
         }
-    }
 
-    if (sp.getGioiTinh() != defaultIntValue) {
-        if (sp.getGioiTinh() == 1) {
-            sqlBuilder.append(" AND GioiTinh = ?");
-            params.add("Nam");
-        } else if (sp.getGioiTinh() == 0) {
-            sqlBuilder.append(" AND GioiTinh = ?");
-            params.add("Nữ");
+        if (sp.getGioiTinh() != defaultIntValue) {
+            if (sp.getGioiTinh() == 1) {
+                sqlBuilder.append(" AND GioiTinh = ?");
+                params.add("Nam");
+            } else if (sp.getGioiTinh() == 0) {
+                sqlBuilder.append(" AND GioiTinh = ?");
+                params.add("Nữ");
+            }
         }
-    }
 
-    if (sp.getSanPham() != null && !sp.getSanPham().isEmpty()) {
-        sqlBuilder.append(" AND IDSanPham IN (SELECT IDSanPham FROM SanPham WHERE TenSanPham LIKE ?)");
-        params.add("%" + sp.getSanPham() + "%");
-    }
+        if (sp.getSanPham() != null && !sp.getSanPham().isEmpty()) {
+            sqlBuilder.append(" AND IDSanPham IN (SELECT IDSanPham FROM SanPham WHERE TenSanPham LIKE ?)");
+            params.add("%" + sp.getSanPham() + "%");
+        }
         String sql = sqlBuilder.toString();
         List<ChiTietSanPham> listctsp = new ArrayList<>();
 
@@ -153,6 +153,47 @@ public class repoChiTietSanPham implements InterfaceRepoChiTietSanPham {
         }
 
         return listctsp;
+    }
+
+    @Override
+    public int add(ChiTietSanPham ctsp) {
+        sql = "INSERT INTO [dbo].[ChiTietSanPham]([IDKiemDinh],[IDSanPham],[IDSize],[Ten],[IDChatLieu],[SoLuongTonKho],[SoLuongDaQuy],[GiaMoi],[GiaCu],[IDGiamGia],[HinhAnh]\n"
+                + "           ,[IDNguonGoc],[TrangThai],[TrongLuong],[IDDaQuy])\n"
+                + "     VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+//            KiemDinh kd = new KiemDinh();
+//            SanPham sp = new SanPham();
+//            Size size = new Size();
+//            ChatLieu ct = new ChatLieu();
+//            GiamGia gg = new GiamGia();
+//            NguonGoc ng = new NguonGoc();
+//            DaQuy dq = new DaQuy();
+
+            pre.setString(1, ctsp.getIDKIemDinh().getIDKiemDinh());
+            pre.setString(2, ctsp.getIDSanPham().getIDSanPham());
+            pre.setString(3, ctsp.getIDSize().getIDSize());
+            pre.setString(4, ctsp.getTen());
+            pre.setString(5, ctsp.getIDChatLieu().getIDChatLieu());
+            pre.setInt(6, ctsp.getSoLuongTonKho());
+            pre.setInt(7, ctsp.getSoLuongDaQuy());
+            pre.setDouble(8, ctsp.getGiaMoi());
+            pre.setDouble(9, ctsp.getGiaCu());
+            pre.setString(10, ctsp.getIDGiamGia().getIDGIamGia());
+            pre.setString(11, ctsp.getHinhAnh());
+            pre.setString(12, ctsp.getIDNguonGoc().getIDNguonGoc());
+            pre.setBoolean(13, ctsp.isTrangThai());
+            pre.setFloat(14, ctsp.getTrongLuong());
+            pre.setString(15, ctsp.getIDDaQuy().getIDDaQuyString());
+
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+
     }
 
 }
