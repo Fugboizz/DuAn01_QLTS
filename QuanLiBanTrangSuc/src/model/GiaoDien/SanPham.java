@@ -11,42 +11,42 @@ import model.GiamGia;
  * @author WINDOWS10
  */
 public class SanPham {
-    private boolean TrangThai ;
-    private boolean GioiTinh ;
-    private boolean GiamGia ;
+    private int TrangThai ;
+    private int GioiTinh ;
+    private int GiamGia ;
     private String sanPham;
 
     public SanPham() {
     }
 
-    public SanPham(boolean TrangThai, boolean GioiTinh, boolean GiamGia, String sanPham) {
+    public SanPham(int TrangThai, int GioiTinh, int GiamGia, String sanPham) {
         this.TrangThai = TrangThai;
         this.GioiTinh = GioiTinh;
         this.GiamGia = GiamGia;
         this.sanPham = sanPham;
     }
 
-    public boolean isTrangThai() {
+    public int getTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(boolean TrangThai) {
+    public void setTrangThai(int TrangThai) {
         this.TrangThai = TrangThai;
     }
 
-    public boolean isGioiTinh() {
+    public int getGioiTinh() {
         return GioiTinh;
     }
 
-    public void setGioiTinh(boolean GioiTinh) {
+    public void setGioiTinh(int GioiTinh) {
         this.GioiTinh = GioiTinh;
     }
 
-    public boolean isGiamGia() {
+    public int getGiamGia() {
         return GiamGia;
     }
 
-    public void setGiamGia(boolean GiamGia) {
+    public void setGiamGia(int GiamGia) {
         this.GiamGia = GiamGia;
     }
 
@@ -58,6 +58,6 @@ public class SanPham {
         this.sanPham = sanPham;
     }
 
-    
+   
     
 }

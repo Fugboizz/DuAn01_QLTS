@@ -29,7 +29,6 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
 
     private List<ChiTietSanPham> ctList = new ArrayList<>();
     private repoChiTietSanPham rpctsp = new repoChiTietSanPham();
-    private ChiTietSanPham ctsp = new ChiTietSanPham();
     private Main main;
     private model.GiaoDien.SanPham mdsp = new SanPham();
     private GiaoDienService gds = new GiaoDienService();
@@ -43,11 +42,13 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
         fillToTable();
     }
 // Làm Mới buttongroup;
-    void lamMoiGroup(){
-    spu.lamMoiGbo(buttonGroup1);
-    spu.lamMoiGbo(buttonGroup2);
-    spu.lamMoiGbo(buttonGroup3);
+
+    void lamMoiGroup() {
+        spu.lamMoiGbo(buttonGroup1);
+        spu.lamMoiGbo(buttonGroup2);
+        spu.lamMoiGbo(buttonGroup3);
     }
+
     void fillToTable() {
         ctList = rpctsp.getAll();
         String hienthi[] = {"Mã Trang Sức", "Loại Sản Phẩm", "Tên Trang Sức", "Giá Giảm", "Tồn Kho", "Giới Tính", "Trạng Thái"};
@@ -60,7 +61,7 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
 
     }
 
-    void fillToCheck() {
+    void fillToCheck(model.GiaoDien.SanPham mdsp) {
         ctList = rpctsp.getAllWithConditional(mdsp);
         String hienthi[] = {"Mã Trang Sức", "Loại Sản Phẩm", "Tên Trang Sức", "Giá Giảm", "Tồn Kho", "Giới Tính", "Trạng Thái"};
         model = new DefaultTableModel(hienthi, 0);
@@ -541,32 +542,50 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cbo_TimKiemActionPerformed
 
     private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
+        // Khởi tạo đối tượng SanPham
+        model.GiaoDien.SanPham mdsp = new SanPham();
+
+        // Kiểm tra trạng thái sản phẩm
         if (rdoConHang.isSelected()) {
-            mdsp.setTrangThai(true);
+            mdsp.setTrangThai(1);
         } else if (rdoHethang.isSelected()) {
-            mdsp.setTrangThai(false);
+            mdsp.setTrangThai(0);
+        } else {
+            mdsp.setTrangThai(-1); // Hoặc một giá trị mặc định khác
         }
+        System.out.println(mdsp.getTrangThai());
 
+        // Kiểm tra giới tính sản phẩm
         if (rdoNam.isSelected()) {
-            mdsp.setGioiTinh(true);
+            mdsp.setGioiTinh(1);
         } else if (rdoNu.isSelected()) {
-            mdsp.setGioiTinh(false);
+            mdsp.setGioiTinh(0);
+        } else {
+            mdsp.setGioiTinh(-1); // Hoặc một giá trị mặc định khác
         }
+        System.out.println(mdsp.getGioiTinh());
 
+        // Kiểm tra trạng thái giảm giá
         if (rdoGiamGiaCo.isSelected()) {
-            mdsp.setGiamGia(true);
+            mdsp.setGiamGia(1);
         } else if (rdoGiamGiaKhon.isSelected()) {
-            mdsp.setGiamGia(false);
+            mdsp.setGiamGia(0);
+        } else {
+            mdsp.setGiamGia(-1); // Hoặc một giá trị mặc định khác
         }
+        System.out.println(mdsp.getGiamGia());
 
+        // Kiểm tra sản phẩm tìm kiếm
         if (cbo_TimKiem.getSelectedIndex() == 1) {
             mdsp.setSanPham(txtTimKiem.getText());
-        }else if(cbo_TimKiem.getSelectedIndex() == 0){
+        } else if (cbo_TimKiem.getSelectedIndex() == 0) {
             mdsp.setSanPham("");
         }
-        ctList.clear(); // Clear current list
-        ctList.addAll(rpctsp.getAllWithConditional(mdsp)); 
-        fillToCheck(); 
+        System.out.println(mdsp.getSanPham());
+
+        // Xóa danh sách hiện tại và cập nhật danh sách kiểm tra
+        ctList.clear();
+        fillToCheck(mdsp);
     }//GEN-LAST:event_btn_TimKiemActionPerformed
 
     private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
