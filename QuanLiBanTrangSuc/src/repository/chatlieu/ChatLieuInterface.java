@@ -13,7 +13,7 @@ import model.ChatLieu;
  */
 public interface ChatLieuInterface {
         public List<ChatLieu> getAll();
-    public int creat();
-    public int update();
-    public int delete();
+    public int creat(ChatLieu cl);
+    public int update(ChatLieu cl);
+    public int delete(ChatLieu cl);
 }

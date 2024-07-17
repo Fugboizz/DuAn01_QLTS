@@ -27,18 +27,18 @@ public class SanPhamRepository implements SanPhamInterface {
 
     @Override
     public List<SanPham> getAll() {
-        List sanPham = new ArrayList();
-        sql = "select * from sanpham as s join GioiTinh as g on s.IDGioiTinh = g.IDGioiTinh";
+        List<SanPham> sanPham = new ArrayList<>();
+        sql = "SELECT * FROM sanpham AS s JOIN GioiTinh AS g ON s.IDGioiTinh = g.IDGioiTinh WHERE TrangThai = 1";
         try {
             con = jdbc.getConnection();
             pre = con.prepareStatement(sql);
             res = pre.executeQuery();
             while(res.next()){
                 SanPham sp = new SanPham();
-                sp.setIDSanPham(res.getString(1));
-                sp.setTenSanPham(res.getString(2));
-                sp.setTrangThai(res.getBoolean(6));
-                GioiTinh gt = new GioiTinh(res.getString(7), res.getString(8));
+                sp.setIDSanPham(res.getString("IDSanPham"));
+                sp.setTenSanPham(res.getString("TenSanPham"));
+                sp.setTrangThai(res.getBoolean("TrangThai"));
+                GioiTinh gt = new GioiTinh(res.getString("IDGioiTinh"), res.getString("GioiTinh"));
                 sp.setIDGioiTinh(gt);
                 sanPham.add(sp);
             }
@@ -50,18 +50,50 @@ public class SanPhamRepository implements SanPhamInterface {
     }
 
     @Override
-    public int creat() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int creat(SanPham sp) {
+        sql = "INSERT INTO SanPham(TenSanPham, IDGioiTinh, TrangThai) VALUES(?,?,?)";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, sp.getTenSanPham());
+            pre.setString(2, sp.getIDGioiTinh().getIDGioiTinh());
+            pre.setBoolean(3, sp.isTrangThai());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
-    public int update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int update(SanPham sp) {
+        sql = "UPDATE SanPham SET TenSanPham = ?, IDGioiTinh = ?, TrangThai = ?   WHERE IDSanPham = ?";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, sp.getTenSanPham());
+            pre.setString(2, sp.getIDGioiTinh().getIDGioiTinh());
+            pre.setBoolean(3, sp.isTrangThai());
+            pre.setString(4, sp.getIDSanPham());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
-    public int delete() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int delete(SanPham sp) {
+        sql = "UPDATE SanPham SET TrangThai = 0   WHERE IDSanPham = ?";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, sp.getIDSanPham());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
 }

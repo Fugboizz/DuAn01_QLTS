@@ -13,7 +13,7 @@ import model.Size;
  */
 public interface SizeInterface {
     public List<Size> getAll();
-    public int creat();
-    public int update();
-    public int delete();
+    public int creat(Size s);
+    public int update(Size s);
+    public int delete(Size s);
 }

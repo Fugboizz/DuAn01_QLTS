@@ -25,7 +25,7 @@ public class MauSacRepository implements MauSacInterface{
     @Override
     public List<MauSac> getAll() {
             List ms = new ArrayList();
-        sql = "select * from MauSac";
+        sql = "select * from MauSac where TrangThai = 1";
         try {
             con = jdbc.getConnection();
             pre = con.prepareStatement(sql);
@@ -44,17 +44,50 @@ public class MauSacRepository implements MauSacInterface{
     }
 
     @Override
-    public int creat() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int creat(MauSac ms) {
+        sql = "EXEC ADDMauSac ?";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, ms.getChiTietMauSac());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
-    public int update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int update(MauSac ms) {
+        sql = "UPDATE MauSac SET ChiTietMauSac = ?   WHERE IDMauSac = ?";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(2, ms.getIDMauSac());
+            pre.setString(1, ms.getChiTietMauSac());
+
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
-    public int delete() {
+    public int delete(MauSac ms) {
+       sql = "UPDATE MauSac SET TrangThai = 0   WHERE IDMauSac = ?";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, ms.getIDMauSac());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public MauSac getMauSacByID(MauSac idMauSac) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

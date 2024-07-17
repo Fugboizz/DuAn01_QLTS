@@ -11,6 +11,7 @@ package model;
 public class MauSac {
     private String IDMauSac;
     private String ChiTietMauSac;
+    private Boolean trangThai;
 
     public MauSac() {
     }
@@ -19,6 +20,9 @@ public class MauSac {
         this.IDMauSac = IDMauSac;
         this.ChiTietMauSac = ChiTietMauSac;
     }
+
+    
+
 
     public String getIDMauSac() {
         return IDMauSac;
@@ -35,6 +39,17 @@ public class MauSac {
     public void setChiTietMauSac(String ChiTietMauSac) {
         this.ChiTietMauSac = ChiTietMauSac;
     }
+
+    public Boolean getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(Boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+    
+    
+
     
     
     

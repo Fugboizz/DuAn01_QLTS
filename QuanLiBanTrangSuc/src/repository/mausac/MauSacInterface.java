@@ -13,7 +13,7 @@ import model.MauSac;
  */
 public interface MauSacInterface {
         public List<MauSac> getAll();
-    public int creat();
-    public int update();
-    public int delete();
+    public int creat(MauSac ms);
+    public int update(MauSac ms);
+    public int delete(MauSac ms);
 }

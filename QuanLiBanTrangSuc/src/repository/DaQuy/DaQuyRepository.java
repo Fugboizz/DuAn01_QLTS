@@ -26,14 +26,13 @@ public class DaQuyRepository implements DaQuyServiceInterface {
     @Override
     public List<DaQuy> getAll() {
         List<DaQuy> list = new ArrayList<>();
-        sql = "Select * from DaQuy";
+        sql = "Select * from DaQuy where TrangThai = 1";
         try {
-            con = jdbc.getConnection();
             con = jdbc.getConnection();
             pre = con.prepareStatement(sql);
             res = pre.executeQuery();
-            while (res.next()) {                
-                DaQuy dq =  new DaQuy();
+            while (res.next()) {
+                DaQuy dq = new DaQuy();
                 dq.setIDDaQuyString(res.getString("IDDaQuy"));
                 dq.setTenDaQuy(res.getString("TenDaQuy"));
                 dq.setKichThuoc(res.getFloat("KichThuoc"));
@@ -48,17 +47,55 @@ public class DaQuyRepository implements DaQuyServiceInterface {
     }
 
     @Override
-    public int creat() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    // Thêm Đá Quý Khôi 17/07
+    public int creat(DaQuy dq) {
+        sql = "INSERT INTO DaQuy(TenDaQuy, KichThuoc, TrangThai) VALUES(?,?,?)";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, dq.getTenDaQuy());
+            pre.setFloat(2, dq.getKichThuoc());
+            pre.setInt(3, 1);
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
-    public int update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    // Update Đá Quý Khôi 17/07 
+    //EXEC UpdateDaQuy @IDDaQuy, @TenDaQuy, @KichThuoc, @TrangThai
+
+   public int update(DaQuy dq) {
+    sql = "UPDATE DaQuy SET TenDaQuy = ?, KichThuoc = ? WHERE IDDaQuy = ?";
+    try {
+        con = jdbc.getConnection();
+        pre = con.prepareStatement(sql);
+        pre.setString(1, dq.getTenDaQuy());
+        pre.setFloat(2, dq.getKichThuoc());
+        pre.setString(3, dq.getIDDaQuyString());
+        return pre.executeUpdate();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return 0;
     }
+}
 
     @Override
-    public int delete() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int delete(DaQuy dq) {
+        sql = "EXEC UpdateDaQuy ?, ?, ?, ?";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, dq.getIDDaQuyString());
+            pre.setString(2, dq.getTenDaQuy());
+            pre.setFloat(3, dq.getKichThuoc());
+            pre.setInt(4, 0);
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 }

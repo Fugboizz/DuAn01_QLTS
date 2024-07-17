@@ -21,6 +21,14 @@ public class DaQuy {
     public DaQuy() {
     }
 
+    public DaQuy(String IDDaQuyString, String TenDaQuy, float KichThuoc) {
+        this.IDDaQuyString = IDDaQuyString;
+        this.TenDaQuy = TenDaQuy;
+        this.KichThuoc = KichThuoc;
+    }
+    
+    
+
     public DaQuy(String IDDaQuyString, String TenDaQuy, float KichThuoc, Date NgayTao, Date NgaySua, boolean TrangThai) {
         this.IDDaQuyString = IDDaQuyString;
         this.TenDaQuy = TenDaQuy;

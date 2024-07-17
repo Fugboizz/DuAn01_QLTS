@@ -44,6 +44,10 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <Events>
+        <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="jTabbedPane1AncestorAdded"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabbedPane1MouseClicked"/>
+      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -76,9 +80,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_TenLoaiDa1" min="-2" pref="145" max="-2" attributes="0"/>
-                          <Component id="txt_TenLoaiDa" min="-2" pref="145" max="-2" attributes="0"/>
-                          <Component id="txt_TenLoaiDa2" min="-2" pref="145" max="-2" attributes="0"/>
+                          <Component id="txt_TenDaQuy" min="-2" pref="145" max="-2" attributes="0"/>
+                          <Component id="txt_MaDaQuy" min="-2" pref="145" max="-2" attributes="0"/>
+                          <Component id="txt_KichThuocDaQuy" min="-2" pref="145" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -92,17 +96,17 @@
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_TenLoaiDa" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_MaDaQuy" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_TenLoaiDa1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_TenDaQuy" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_TenLoaiDa2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_KichThuocDaQuy" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                       <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
@@ -129,24 +133,24 @@
                 <Property name="text" type="java.lang.String" value="T&#xea;n Loa&#x323;i &#x110;a&#x301;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_TenLoaiDa">
+            <Component class="javax.swing.JTextField" name="txt_MaDaQuy">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenLoaiDaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_MaDaQuyActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_TenLoaiDa1">
+            <Component class="javax.swing.JTextField" name="txt_TenDaQuy">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenLoaiDa1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenDaQuyActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
@@ -157,14 +161,14 @@
                 <Property name="text" type="java.lang.String" value="Ki&#x301;ch Th&#x1b0;&#x1a1;&#x301;c:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_TenLoaiDa2">
+            <Component class="javax.swing.JTextField" name="txt_KichThuocDaQuy">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenLoaiDa2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_KichThuocDaQuyActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel8">
@@ -179,13 +183,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace pref="136" max="32767" attributes="0"/>
-                          <Component id="jButton5" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btl_LamMoiDQ" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton6" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_XoaDQ" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton7" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_SuaDQ" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton8" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_ThemDQ" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace pref="137" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -195,10 +199,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton5" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton6" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton7" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton8" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btl_LamMoiDQ" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_XoaDQ" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_SuaDQ" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_ThemDQ" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
@@ -206,7 +210,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jButton5">
+                <Component class="javax.swing.JButton" name="btl_LamMoiDQ">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -220,7 +224,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton6">
+                <Component class="javax.swing.JButton" name="btn_XoaDQ">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -236,8 +240,11 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_XoaDQActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton7">
+                <Component class="javax.swing.JButton" name="btn_SuaDQ">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="ff" red="ff" type="rgb"/>
@@ -253,8 +260,11 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_SuaDQActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton8">
+                <Component class="javax.swing.JButton" name="btn_ThemDQ">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="cc" red="0" type="rgb"/>
@@ -270,6 +280,9 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ThemDQActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -280,7 +293,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="tbl_DaQuy">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="3" rowCount="4">
@@ -290,6 +303,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_DaQuyMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -319,9 +335,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txt_TenLoaiDa4" alignment="0" pref="145" max="32767" attributes="0"/>
-                          <Component id="txt_TenLoaiDa3" alignment="0" pref="145" max="32767" attributes="0"/>
-                          <Component id="txt_TenLoaiDa5" alignment="0" pref="145" max="32767" attributes="0"/>
+                          <Component id="txt_TenChatLieu" alignment="0" pref="145" max="32767" attributes="0"/>
+                          <Component id="txt_MaChatLieu" alignment="0" pref="145" max="32767" attributes="0"/>
+                          <Component id="txt_TyLeChatLieu" alignment="0" pref="145" max="32767" attributes="0"/>
                           <Component id="cbo_MauSac" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -334,17 +350,17 @@
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_TenLoaiDa3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_MaChatLieu" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_TenLoaiDa4" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_TenChatLieu" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_TenLoaiDa5" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_TyLeChatLieu" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -360,24 +376,24 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txt_TenLoaiDa3">
+            <Component class="javax.swing.JTextField" name="txt_MaChatLieu">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenLoaiDa3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_MaChatLieuActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_TenLoaiDa4">
+            <Component class="javax.swing.JTextField" name="txt_TenChatLieu">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenLoaiDa4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenChatLieuActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
@@ -388,14 +404,14 @@
                 <Property name="text" type="java.lang.String" value="Ty&#x309; L&#xea;&#x323;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_TenLoaiDa5">
+            <Component class="javax.swing.JTextField" name="txt_TyLeChatLieu">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenLoaiDa5ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TyLeChatLieuActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel10">
@@ -410,13 +426,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace pref="136" max="32767" attributes="0"/>
-                          <Component id="jButton13" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_LamMoiCL" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton14" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_XoaCL" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton15" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_SuaCL" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton16" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_ThemCL" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace pref="137" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -426,10 +442,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton13" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton14" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton15" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton16" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_LamMoiCL" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_XoaCL" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_SuaCL" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_ThemCL" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
@@ -437,7 +453,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jButton13">
+                <Component class="javax.swing.JButton" name="btn_LamMoiCL">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -451,7 +467,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton14">
+                <Component class="javax.swing.JButton" name="btn_XoaCL">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -467,8 +483,11 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_XoaCLActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton15">
+                <Component class="javax.swing.JButton" name="btn_SuaCL">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="ff" red="ff" type="rgb"/>
@@ -484,8 +503,11 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_SuaCLActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton16">
+                <Component class="javax.swing.JButton" name="btn_ThemCL">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="cc" red="0" type="rgb"/>
@@ -501,6 +523,9 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ThemCLActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -519,16 +544,20 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable3">
+                <Component class="javax.swing.JTable" name="tbl_ChatLieu">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="3" rowCount="4">
-                        <Column editable="false" title="Ma&#x303; &#x110;a&#x301; Quy&#x301;" type="java.lang.Object"/>
-                        <Column editable="false" title="T&#xea;n Loa&#x323;i &#x110;a&#x301;" type="java.lang.Object"/>
-                        <Column editable="false" title="Ki&#x301;ch Th&#x1b0;&#x1a1;&#x301;c" type="java.lang.Object"/>
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="false" title="Ma&#x303; Chat Li&#x1ec7;u" type="java.lang.Object"/>
+                        <Column editable="false" title="T&#xea;n Ch&#x1ea5;t Li&#x1ec7;u" type="java.lang.Object"/>
+                        <Column editable="false" title="T&#x1ef7; L&#x1ec7;" type="java.lang.Object"/>
+                        <Column editable="false" title="M&#x1ea7;u S&#x1eaf;c" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_ChatLieuMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -577,8 +606,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txt_TenLoaiDa7" alignment="0" pref="145" max="32767" attributes="0"/>
-                          <Component id="txt_TenLoaiDa6" alignment="0" pref="145" max="32767" attributes="0"/>
+                          <Component id="txt_TenMauSac" alignment="0" pref="145" max="32767" attributes="0"/>
+                          <Component id="txt_MaMauSac" alignment="0" pref="145" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -592,11 +621,11 @@
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_TenLoaiDa6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_MaMauSac" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_TenLoaiDa7" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_TenMauSac" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
@@ -608,24 +637,24 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txt_TenLoaiDa6">
+            <Component class="javax.swing.JTextField" name="txt_MaMauSac">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenLoaiDa6ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_MaMauSacActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_TenLoaiDa7">
+            <Component class="javax.swing.JTextField" name="txt_TenMauSac">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenLoaiDa7ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenMauSacActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel11">
@@ -640,13 +669,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace pref="135" max="32767" attributes="0"/>
-                          <Component id="jButton17" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_LamMoiMS" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton18" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_XoaMS" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton19" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_SuaMS" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton20" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_ThemMS" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace pref="138" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -656,10 +685,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton17" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton18" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton19" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton20" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_LamMoiMS" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_XoaMS" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_SuaMS" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_ThemMS" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
@@ -667,7 +696,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jButton17">
+                <Component class="javax.swing.JButton" name="btn_LamMoiMS">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -681,7 +710,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton18">
+                <Component class="javax.swing.JButton" name="btn_XoaMS">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -697,8 +726,11 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_XoaMSActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton19">
+                <Component class="javax.swing.JButton" name="btn_SuaMS">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="ff" red="ff" type="rgb"/>
@@ -714,8 +746,11 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_SuaMSActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton20">
+                <Component class="javax.swing.JButton" name="btn_ThemMS">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="cc" red="0" type="rgb"/>
@@ -731,6 +766,9 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ThemMSActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -749,16 +787,18 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable4">
+                <Component class="javax.swing.JTable" name="tbl_MauSac">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="3" rowCount="4">
-                        <Column editable="false" title="Ma&#x303; &#x110;a&#x301; Quy&#x301;" type="java.lang.Object"/>
-                        <Column editable="false" title="T&#xea;n Loa&#x323;i &#x110;a&#x301;" type="java.lang.Object"/>
-                        <Column editable="false" title="Ki&#x301;ch Th&#x1b0;&#x1a1;&#x301;c" type="java.lang.Object"/>
+                      <Table columnCount="2" rowCount="4">
+                        <Column editable="false" title="M&#xe3; M&#xe0;u" type="java.lang.Object"/>
+                        <Column editable="false" title="T&#xea;n M&#xe0;u" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_MauSacMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -798,24 +838,24 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jRadioButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rdo_Nam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rdo_KinhDoanh" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                      <Component id="jRadioButton5" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rdo_NgungKinhDoanh" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                      <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rdo_Nu" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rdo_Chung" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <Component id="txt_TenLoaiDa9" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txt_TenLoaiDa8" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt_TenSanPham" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt_MaSanPham" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -827,25 +867,25 @@
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_TenLoaiDa8" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_MaSanPham" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_TenLoaiDa9" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_TenSanPham" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdo_Nam" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdo_Nu" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdo_Chung" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdo_KinhDoanh" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdo_NgungKinhDoanh" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
                       <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
@@ -856,24 +896,24 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txt_TenLoaiDa8">
+            <Component class="javax.swing.JTextField" name="txt_MaSanPham">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenLoaiDa8ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_MaSanPhamActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_TenLoaiDa9">
+            <Component class="javax.swing.JTextField" name="txt_TenSanPham">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenLoaiDa9ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenSanPhamActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel13">
@@ -888,13 +928,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace pref="135" max="32767" attributes="0"/>
-                          <Component id="jButton25" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_LamMoiSP" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton26" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_XoaSP" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton27" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_SuaSP" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton28" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_ThemSP" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace pref="138" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -904,10 +944,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton25" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton26" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton27" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton28" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_LamMoiSP" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_XoaSP" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_SuaSP" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_ThemSP" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
@@ -915,7 +955,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jButton25">
+                <Component class="javax.swing.JButton" name="btn_LamMoiSP">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -929,7 +969,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton26">
+                <Component class="javax.swing.JButton" name="btn_XoaSP">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -945,8 +985,11 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_XoaSPActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton27">
+                <Component class="javax.swing.JButton" name="btn_SuaSP">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="ff" red="ff" type="rgb"/>
@@ -962,8 +1005,11 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_SuaSPActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton28">
+                <Component class="javax.swing.JButton" name="btn_ThemSP">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="cc" red="0" type="rgb"/>
@@ -979,6 +1025,9 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ThemSPActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -997,16 +1046,20 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable6">
+                <Component class="javax.swing.JTable" name="tbl_SanPham">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="3" rowCount="4">
-                        <Column editable="false" title="Ma&#x303; &#x110;a&#x301; Quy&#x301;" type="java.lang.Object"/>
-                        <Column editable="false" title="T&#xea;n Loa&#x323;i &#x110;a&#x301;" type="java.lang.Object"/>
-                        <Column editable="false" title="Ki&#x301;ch Th&#x1b0;&#x1a1;&#x301;c" type="java.lang.Object"/>
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="false" title="M&#xe3; S&#x1ea3;n Ph&#x1ea9;m" type="java.lang.Object"/>
+                        <Column editable="false" title="T&#xea;n S&#x1ea3;n Ph&#x1ea9;m" type="java.lang.Object"/>
+                        <Column editable="false" title="Gi&#x1edb;i T&#xed;nh" type="java.lang.Object"/>
+                        <Column editable="false" title="Tr&#x1ea1;ng Th&#xe1;i" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_SanPhamMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1023,7 +1076,7 @@
                 <Property name="text" type="java.lang.String" value="Gi&#x1a1;&#x301;i Ti&#x301;nh:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+            <Component class="javax.swing.JRadioButton" name="rdo_Nam">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
@@ -1037,7 +1090,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+            <Component class="javax.swing.JRadioButton" name="rdo_Nu">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
@@ -1051,8 +1104,11 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton3">
+            <Component class="javax.swing.JRadioButton" name="rdo_Chung">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup1"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
@@ -1067,7 +1123,7 @@
                 <Property name="text" type="java.lang.String" value="Tra&#x323;ng Tha&#x301;i:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton4">
+            <Component class="javax.swing.JRadioButton" name="rdo_KinhDoanh">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup2"/>
@@ -1081,7 +1137,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton5">
+            <Component class="javax.swing.JRadioButton" name="rdo_NgungKinhDoanh">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup2"/>
@@ -1117,8 +1173,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txt_TenLoaiDa11" alignment="0" pref="145" max="32767" attributes="0"/>
-                          <Component id="txt_TenLoaiDa10" alignment="0" pref="145" max="32767" attributes="0"/>
+                          <Component id="txt_Size" alignment="0" pref="145" max="32767" attributes="0"/>
+                          <Component id="txt_MaSize" alignment="0" pref="145" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -1132,11 +1188,11 @@
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_TenLoaiDa10" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_MaSize" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_TenLoaiDa11" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txt_Size" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
@@ -1148,24 +1204,24 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txt_TenLoaiDa10">
+            <Component class="javax.swing.JTextField" name="txt_MaSize">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenLoaiDa10ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_MaSizeActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_TenLoaiDa11">
+            <Component class="javax.swing.JTextField" name="txt_Size">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TenLoaiDa11ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_SizeActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel12">
@@ -1180,13 +1236,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace pref="135" max="32767" attributes="0"/>
-                          <Component id="jButton21" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_LamMoiSize" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton22" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_XoaSize" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton23" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_SuaSize" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton24" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="btn_Them" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace pref="138" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1196,10 +1252,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton21" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton22" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton23" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jButton24" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_LamMoiSize" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_XoaSize" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_SuaSize" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_Them" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
@@ -1207,7 +1263,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jButton21">
+                <Component class="javax.swing.JButton" name="btn_LamMoiSize">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -1221,7 +1277,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton22">
+                <Component class="javax.swing.JButton" name="btn_XoaSize">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -1237,8 +1293,11 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_XoaSizeActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton23">
+                <Component class="javax.swing.JButton" name="btn_SuaSize">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="ff" red="ff" type="rgb"/>
@@ -1254,8 +1313,11 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_SuaSizeActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton24">
+                <Component class="javax.swing.JButton" name="btn_Them">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="cc" red="0" type="rgb"/>
@@ -1271,6 +1333,9 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ThemActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1279,7 +1344,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Ma&#x303; Siz:"/>
+                <Property name="text" type="java.lang.String" value="Ma&#x303; Size:"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane5">
@@ -1292,13 +1357,15 @@
                 <Component class="javax.swing.JTable" name="jTable5">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="3" rowCount="4">
-                        <Column editable="false" title="Ma&#x303; &#x110;a&#x301; Quy&#x301;" type="java.lang.Object"/>
-                        <Column editable="false" title="T&#xea;n Loa&#x323;i &#x110;a&#x301;" type="java.lang.Object"/>
-                        <Column editable="false" title="Ki&#x301;ch Th&#x1b0;&#x1a1;&#x301;c" type="java.lang.Object"/>
+                      <Table columnCount="2" rowCount="4">
+                        <Column editable="false" title="M&#xe3; Size" type="java.lang.Object"/>
+                        <Column editable="false" title="Size" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable5MouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

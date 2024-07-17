@@ -27,7 +27,7 @@ public class SizeRepository implements SizeInterface {
     @Override
     public List<Size> getAll() {
         List size = new ArrayList<>();
-        sql = "select * from Size";
+        sql = "select * from Size where TrangThai = 1";
         try {
             con = jdbc.getConnection();
             pre = con.prepareStatement(sql);
@@ -36,7 +36,6 @@ public class SizeRepository implements SizeInterface {
                 Size s = new Size();
                 s.setIDSize(res.getString(1));
                 s.setSoSize(res.getInt(2));
-                s.setTrangThai(res.getBoolean(5));
                 size.add(s);
             }
             return size;
@@ -47,17 +46,47 @@ public class SizeRepository implements SizeInterface {
     }
 
     @Override
-    public int creat() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int creat(Size s) {
+        sql = "INSERT INTO Size(SoSize, TrangThai) VALUES(?,1)";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setInt(1, s.getSoSize());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
-    public int update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int update(Size s) {
+        sql = "UPDATE Size SET SoSize =?   WHERE IDSize = ?";
+    try {
+        con = jdbc.getConnection();
+        pre = con.prepareStatement(sql);
+        pre.setInt(1, s.getSoSize());
+        pre.setString(2, s.getIDSize());
+
+        return pre.executeUpdate();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return 0;
     }
+}
 
     @Override
-    public int delete() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int delete(Size s) {
+        sql = "UPDATE Size SET TrangThai = 0   WHERE IDSize = ?";
+    try {
+        con = jdbc.getConnection();
+        pre = con.prepareStatement(sql);
+        pre.setString(1, s.getIDSize());
+
+        return pre.executeUpdate();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return 0;
+    }
     }
 }

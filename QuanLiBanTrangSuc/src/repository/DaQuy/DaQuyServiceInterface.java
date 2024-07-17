@@ -15,9 +15,9 @@ public interface DaQuyServiceInterface {
 
     public List<DaQuy> getAll();
 
-    public int creat();
+    public int creat(DaQuy dq);
 
-    public int update();
+    public int update(DaQuy dq);
 
-    public int delete();
+    public int delete(DaQuy dq);
 }
