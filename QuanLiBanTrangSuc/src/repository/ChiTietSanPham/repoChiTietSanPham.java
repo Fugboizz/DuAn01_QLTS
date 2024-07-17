@@ -195,5 +195,48 @@ public class repoChiTietSanPham implements InterfaceRepoChiTietSanPham {
         }
 
     }
+    // xử lý kiểm tra ở database xem mã trang sức có không
+    @Override
+    public ChiTietSanPham getSanPhamSua(String string) {
+        sql = "select * from v_SuaSanPham where IDChiTietSanPham = ?";
+        
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, string);
+            res = pre.executeQuery();
+            if(res.next()){
+                ChiTietSanPham ctsp = new ChiTietSanPham();
+                SanPham sp = new SanPham();
+                sp.setTenSanPham(res.getString(1));
+                ctsp.setIDSanPham(sp);
+                ctsp.setTen(res.getString(2));
+                ctsp.setIDChiTietSanPham(res.getString(3));
+                ctsp.setGiaCu(res.getDouble(4));
+                Size s = new Size();
+                s.setSoSize(res.getInt(5));
+                ctsp.setIDSize(s);
+                ChatLieu cl = new ChatLieu();
+                cl.setTenChatLieu(res.getString(6));
+                ctsp.setIDChatLieu(cl);
+                ctsp.setTrongLuong(res.getFloat(7));
+                DaQuy dq = new DaQuy();
+                dq.setTenDaQuy(res.getString(8));
+                dq.setKichThuoc(res.getFloat(9));
+                ctsp.setIDDaQuy(dq);
+                NguonGoc ng = new NguonGoc();
+                ng.setCongTy(res.getString(10));
+                ctsp.setIDNguonGoc(ng);
+                KiemDinh kd = new KiemDinh();
+                kd.setDonViKiemDinh(res.getString(11));
+                ctsp.setIDKIemDinh(kd);
+                return ctsp;
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

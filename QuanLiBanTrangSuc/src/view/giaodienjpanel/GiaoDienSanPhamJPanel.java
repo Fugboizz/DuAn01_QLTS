@@ -72,7 +72,15 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
         }
         tblThongTinChiTietSanPham.setModel(model);
     }
-
+    // Lấy mã trang sức ở bảng table
+        public String getMaTrangSuc() {
+        int i = tblThongTinChiTietSanPham.getSelectedRow();
+        if (i >= 0) {
+            String mt = (String) tblThongTinChiTietSanPham.getValueAt(i, 0);
+            return mt;
+        }
+        return null;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -507,6 +515,7 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
     private void btn_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaActionPerformed
         // TODO add your handling code here:
         SuaSanPhamDialog suaDialog = new SuaSanPhamDialog(main, true);
+        suaDialog.showDuLieu(rpctsp.getSanPhamSua(getMaTrangSuc()));
         gds.clicked(suaDialog);
     }//GEN-LAST:event_btn_SuaActionPerformed
 

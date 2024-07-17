@@ -5,6 +5,9 @@
 package view.sanphamdialog;
 
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import model.ChiTietSanPham;
 import service.sanpham.SanPhamService;
 import view.until.SanPhamUntil;
 import view.until.ViewDialog;
@@ -53,6 +56,52 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
         spu.lamMoiCbo(cbo_XuatXu);
         spu.lamMoiCbo(cbo_LoaiDa);
         spu.lamLabel(txt_Anh);
+    }
+    //Hiển thị form
+     public void showDuLieu(ChiTietSanPham t) {
+        txt_TenTrangSuc.setText(t.getTen());
+        txt_GiaBan.setText(String.valueOf(t.getGiaCu()));
+        txt_TrongLuong.setText(String.valueOf(t.getTrongLuong()));
+        txt_SoLuongDa.setText(String.valueOf(t.getSoLuongDaQuy()));
+        txt_MaTrangSuc.setText(t.getIDChiTietSanPham());
+        for (int i = 0; i < cbo_LoaiTrangSuc.getItemCount(); i++) {
+            if (t.getIDSanPham().getTenSanPham().equalsIgnoreCase(cbo_LoaiTrangSuc.getItemAt(i))) {
+                cbo_LoaiTrangSuc.setSelectedIndex(i);
+            }
+        }
+        for (int i = 0; i < cbo_ChatLieu.getItemCount(); i++) {
+            if (t.getIDChatLieu().getTenChatLieu().equalsIgnoreCase(cbo_ChatLieu.getItemAt(i))) {
+                cbo_ChatLieu.setSelectedIndex(i);
+            }
+        }
+        for (int i = 0; i < cbo_LoaiDa.getItemCount(); i++) {
+            String ten = t.getIDDaQuy().getTenDaQuy() + " - " + t.getIDDaQuy().getKichThuoc();
+            if (ten.equalsIgnoreCase(cbo_LoaiDa.getItemAt(i))) {
+                cbo_LoaiDa.setSelectedIndex(i);
+            }
+
+        }
+
+        for (int i = 0; i < cbo_XuatXu.getItemCount(); i++) {
+            if (t.getIDNguonGoc().getCongTy().equalsIgnoreCase(cbo_XuatXu.getItemAt(i))) {
+                cbo_XuatXu.setSelectedIndex(i);
+            }
+        }
+        for (int i = 0; i < cbo_KiemDinh.getItemCount(); i++) {
+            if (t.getIDKIemDinh().getDonViKiemDinh().equalsIgnoreCase(cbo_KiemDinh.getItemAt(i))) {
+                cbo_KiemDinh.setSelectedIndex(i);
+            }
+        }
+        for (int i = 0; i < cbo_Size.getItemCount(); i++) {
+            if (String.valueOf(t.getIDSize().getSoSize()).equalsIgnoreCase(cbo_Size.getItemAt(i))) {
+                cbo_Size.setSelectedIndex(i);
+            }
+        }
+        ImageIcon imageIcon = new ImageIcon(t.getHinhAnh());
+        Image image = imageIcon.getImage(); // Chuyển đổi về đối tượng Image
+        Image scaledImage = image.getScaledInstance(txt_Anh.getWidth()-2, txt_Anh.getHeight()-2, Image.SCALE_SMOOTH); // Thay đổi kích thước ảnh
+        imageIcon = new ImageIcon(scaledImage);
+        txt_Anh.setIcon(imageIcon);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
