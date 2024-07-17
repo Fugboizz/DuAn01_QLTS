@@ -16,6 +16,7 @@ import model.DaQuy;
 import model.GiamGia;
 import model.GioiTinh;
 import model.KiemDinh;
+import model.MauSac;
 import model.NguonGoc;
 import model.SanPham;
 import model.Size;
@@ -230,6 +231,7 @@ public class repoChiTietSanPham implements InterfaceRepoChiTietSanPham {
                 KiemDinh kd = new KiemDinh();
                 kd.setDonViKiemDinh(res.getString(11));
                 ctsp.setIDKIemDinh(kd);
+                ctsp.setHinhAnh(res.getString(12));
                 return ctsp;
             }
             
@@ -238,5 +240,130 @@ public class repoChiTietSanPham implements InterfaceRepoChiTietSanPham {
         }
         return null;
     }
+   //Xử lý tìm kiếm để hiển thị chi tiết sản phẩm
 
+    @Override
+    public ChiTietSanPham getChiTietSanPham(String string) {
+        sql = "select * from v_ChiTietSanPham where IDChiTietSanPham = ?";
+        
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, string);
+            res = pre.executeQuery();
+            if(res.next()){
+                ChiTietSanPham ctsp = new ChiTietSanPham();
+                SanPham sp = new SanPham();
+                sp.setTenSanPham(res.getString(1));
+                GioiTinh gt = new GioiTinh();
+                gt.setGioiTinh(res.getString(3));
+                sp.setIDGioiTinh(gt);
+                ctsp.setIDSanPham(sp);
+                ctsp.setTen(res.getString(2));
+                ctsp.setIDChiTietSanPham(res.getString(4));
+                ctsp.setGiaCu(res.getDouble(5));
+                ctsp.setGiaMoi(res.getDouble(6));
+                Size s = new Size();
+                s.setSoSize(res.getInt(7));
+                ctsp.setIDSize(s);
+                ChatLieu cl = new ChatLieu();
+                cl.setTenChatLieu(res.getString(8));
+                cl.setTyLe(res.getFloat(9));
+                MauSac ms = new MauSac();
+                ms.setChiTietMauSac(res.getString(10));
+                cl.setIDMauSac(ms);
+                ctsp.setIDChatLieu(cl);
+                ctsp.setTrongLuong(res.getFloat(11));
+                 DaQuy dq = new DaQuy();
+                dq.setTenDaQuy(res.getString(12));
+                dq.setKichThuoc(res.getFloat(13));
+                ctsp.setIDDaQuy(dq);
+                NguonGoc ng = new NguonGoc();
+                ng.setCongTy(res.getString(14));
+                ctsp.setIDNguonGoc(ng);
+                KiemDinh kd = new KiemDinh();
+                kd.setDonViKiemDinh(res.getString(15));
+                ctsp.setIDKIemDinh(kd);
+                ctsp.setHinhAnh(res.getString(16));
+                
+                
+                return ctsp;
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    //Xóa(chuyển trạng thái chi tiết sản phảm về 0)
+    @Override
+    public int delete(String string) {
+        sql = "UPDATE ChiTietSanPham SET TrangThai = 0   WHERE IdChiTietSanPham = ?";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1,string);
+
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    } 
+
+    @Override
+    public int update(ChiTietSanPham ctsp, String string) {
+        sql = "UPDATE [dbo].[ChiTietSanPham]\n" +
+"   SET [IDKiemDinh] = ?\n" +
+"      ,[IDSanPham] = ?\n" +
+"      ,[IDSize] = ?\n" +
+"      ,[Ten] = ?\n" +
+"      ,[IDChatLieu] = ?\n" +
+"      ,[SoLuongTonKho] = ?\n" +
+"      ,[SoLuongDaQuy] = ?\n" +
+"      ,[GiaMoi] =?\n" +
+"      ,[GiaCu] = ?\n" +
+"      ,[IDGiamGia] =?\n" +
+"      ,[HinhAnh] = ?\n" +
+"      ,[IDNguonGoc] = ?\n" +
+"      ,[TrangThai] = ?\n" +
+"      ,[TrongLuong] = ?\n" +
+"      ,[IDDaQuy] = ?\n" +
+"\n" +
+" WHERE IDChiTietSanPham = ?";
+
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(16, string);
+//            KiemDinh kd = new KiemDinh();
+//            SanPham sp = new SanPham();
+//            Size size = new Size();
+//            ChatLieu ct = new ChatLieu();
+//            GiamGia gg = new GiamGia();
+//            NguonGoc ng = new NguonGoc();
+//            DaQuy dq = new DaQuy();
+
+            pre.setString(1, ctsp.getIDKIemDinh().getIDKiemDinh());
+            pre.setString(2, ctsp.getIDSanPham().getIDSanPham());
+            pre.setString(3, ctsp.getIDSize().getIDSize());
+            pre.setString(4, ctsp.getTen());
+            pre.setString(5, ctsp.getIDChatLieu().getIDChatLieu());
+            pre.setInt(6, ctsp.getSoLuongTonKho());
+            pre.setInt(7, ctsp.getSoLuongDaQuy());
+            pre.setDouble(8, ctsp.getGiaMoi());
+            pre.setDouble(9, ctsp.getGiaCu());
+            pre.setString(10, ctsp.getIDGiamGia().getIDGIamGia());
+            pre.setString(11, ctsp.getHinhAnh());
+            pre.setString(12, ctsp.getIDNguonGoc().getIDNguonGoc());
+            pre.setBoolean(13, ctsp.isTrangThai());
+            pre.setFloat(14, ctsp.getTrongLuong());
+            pre.setString(15, ctsp.getIDDaQuy().getIDDaQuyString());
+
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

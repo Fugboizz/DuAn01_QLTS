@@ -515,13 +515,15 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
     private void btn_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaActionPerformed
         // TODO add your handling code here:
         SuaSanPhamDialog suaDialog = new SuaSanPhamDialog(main, true);
-        suaDialog.showDuLieu(rpctsp.getSanPhamSua(getMaTrangSuc()));
+        suaDialog.showDuLieu(rpctsp.getChiTietSanPham(getMaTrangSuc()));
         gds.clicked(suaDialog);
     }//GEN-LAST:event_btn_SuaActionPerformed
 
     private void btn_ChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ChiTietActionPerformed
         // TODO add your handling code here:
         ThongTinChiTietSanPhamDialog ttct = new ThongTinChiTietSanPhamDialog(main, true);
+        ttct.showData(rpctsp.getChiTietSanPham(getMaTrangSuc()));
+        
         gds.clicked(ttct);
     }//GEN-LAST:event_btn_ChiTietActionPerformed
 
@@ -538,6 +540,7 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
     private void btn_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XoaActionPerformed
         // TODO add your handling code here:
         XoaSanPhamDialog xoaDialog = new XoaSanPhamDialog(main, true);
+        xoaDialog.getDuLieu(rpctsp.getChiTietSanPham(getMaTrangSuc()));
         gds.clicked(xoaDialog);
     }//GEN-LAST:event_btn_XoaActionPerformed
 

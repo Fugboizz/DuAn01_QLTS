@@ -16,4 +16,7 @@ public interface InterfaceRepoChiTietSanPham {
     public List<ChiTietSanPham> getAllWithConditional (SanPham sp);
     public int add(ChiTietSanPham ct);
     public ChiTietSanPham getSanPhamSua(String string);
+    public ChiTietSanPham getChiTietSanPham(String string);
+    public int delete(String string);
+     public int update(ChiTietSanPham ct, String string);
 }

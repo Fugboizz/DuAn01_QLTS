@@ -62,31 +62,31 @@ public class SizeRepository implements SizeInterface {
     @Override
     public int update(Size s) {
         sql = "UPDATE Size SET SoSize =?   WHERE IDSize = ?";
-    try {
-        con = jdbc.getConnection();
-        pre = con.prepareStatement(sql);
-        pre.setInt(1, s.getSoSize());
-        pre.setString(2, s.getIDSize());
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setInt(1, s.getSoSize());
+            pre.setString(2, s.getIDSize());
 
-        return pre.executeUpdate();
-    } catch (Exception e) {
-        e.printStackTrace();
-        return 0;
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
-}
 
     @Override
     public int delete(Size s) {
         sql = "UPDATE Size SET TrangThai = 0   WHERE IDSize = ?";
-    try {
-        con = jdbc.getConnection();
-        pre = con.prepareStatement(sql);
-        pre.setString(1, s.getIDSize());
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, s.getIDSize());
 
-        return pre.executeUpdate();
-    } catch (Exception e) {
-        e.printStackTrace();
-        return 0;
-    }
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 }

@@ -532,6 +532,7 @@ public class QuanLiDialog1 extends javax.swing.JDialog {
         jLabel4.setText("Tên Loại Đá:");
 
         txt_MaDaQuy.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txt_MaDaQuy.setEnabled(false);
         txt_MaDaQuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_MaDaQuyActionPerformed(evt);
@@ -690,6 +691,7 @@ public class QuanLiDialog1 extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Đá Quý", DaQuy);
 
+        txt_MaChatLieu.setEditable(false);
         txt_MaChatLieu.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txt_MaChatLieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -863,6 +865,7 @@ public class QuanLiDialog1 extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Chất Liệu", ChatLieu);
 
+        txt_MaMauSac.setEditable(false);
         txt_MaMauSac.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txt_MaMauSac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1012,6 +1015,7 @@ public class QuanLiDialog1 extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Màu Sắc", MauSac);
 
+        txt_MaSanPham.setEditable(false);
         txt_MaSanPham.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txt_MaSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1216,6 +1220,7 @@ public class QuanLiDialog1 extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Sản Phẩm", SanPham);
 
+        txt_MaSize.setEditable(false);
         txt_MaSize.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txt_MaSize.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

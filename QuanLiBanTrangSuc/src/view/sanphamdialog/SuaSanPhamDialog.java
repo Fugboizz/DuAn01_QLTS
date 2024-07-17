@@ -7,7 +7,17 @@ package view.sanphamdialog;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import model.ChatLieu;
 import model.ChiTietSanPham;
+import model.DaQuy;
+import model.GiamGia;
+import model.KiemDinh;
+import model.NguonGoc;
+import model.SanPham;
+import model.Size;
+import repository.ChiTietSanPham.repoChiTietSanPham;
+import service.ChiTietSanPhamService;
 import service.sanpham.SanPhamService;
 import view.until.SanPhamUntil;
 import view.until.ViewDialog;
@@ -16,6 +26,8 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
 
     private SanPhamUntil spu = new SanPhamUntil();
     private SanPhamService sps = new SanPhamService();
+    private ChiTietSanPhamService svChiTietSanPham = new ChiTietSanPhamService();
+    private repository.ChiTietSanPham.repoChiTietSanPham rpctsp = new repoChiTietSanPham();
     ViewDialog vd = new ViewDialog();
 
     public SuaSanPhamDialog(java.awt.Frame parent, boolean modal) {
@@ -102,6 +114,100 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
         Image scaledImage = image.getScaledInstance(txt_Anh.getWidth()-2, txt_Anh.getHeight()-2, Image.SCALE_SMOOTH); // Thay đổi kích thước ảnh
         imageIcon = new ImageIcon(scaledImage);
         txt_Anh.setIcon(imageIcon);
+    }
+           String link;
+     ChiTietSanPham addNew() {
+        ChiTietSanPham ctsp = new ChiTietSanPham();
+        boolean hasNull = false;
+
+        // Kiểm tra IDKiemDinh
+        KiemDinh kd = svChiTietSanPham.checkKD(cbo_KiemDinh);
+        if (kd == null) {
+            System.out.println("Không tìm thấy giá trị KiemDinh hợp lệ.");
+            hasNull = true;
+        } else {
+            System.out.println("KiemDinh");
+            ctsp.setIDKIemDinh(kd); // Thiết lập giá trị IDKiemDinh
+        }
+
+        // Kiểm tra IDDaQuy
+        DaQuy dq = svChiTietSanPham.checkdq(cbo_LoaiDa);
+        if (dq == null) {
+            System.out.println("Không tìm thấy giá trị DaQuy hợp lệ.");
+            hasNull = true;
+        } else {
+            System.out.println("DaQuy");
+            ctsp.setIDDaQuy(dq); // Thiết lập giá trị IDDaQuy
+        }
+
+        // Kiểm tra IDSanPham
+        SanPham sp = svChiTietSanPham.checkSP(cbo_LoaiTrangSuc);
+        if (sp == null) {
+            System.out.println("Không tìm thấy giá trị SanPham hợp lệ.");
+            hasNull = true;
+        } else {
+            System.out.println("SanPham");
+            ctsp.setIDSanPham(sp); // Thiết lập giá trị IDSanPham
+        }
+
+        // Kiểm tra IDSize
+        Size sz = svChiTietSanPham.checkSize(cbo_Size);
+        if (sz == null) {
+            System.out.println("Không tìm thấy giá trị Size hợp lệ.");
+            hasNull = true;
+        } else {
+            System.out.println("Size");
+            ctsp.setIDSize(sz); // Thiết lập giá trị IDSize
+        }
+
+        // Kiểm tra IDChatLieu
+        ChatLieu cl = svChiTietSanPham.checkcl(cbo_ChatLieu);
+        if (cl == null) {
+            System.out.println("Không tìm thấy giá trị ChatLieu hợp lệ.");
+            hasNull = true;
+        } else {
+            System.out.println("ChatLieu");
+            ctsp.setIDChatLieu(cl); // Thiết lập giá trị IDChatLieu
+        }
+
+        // Kiểm tra IDNguonGoc
+        NguonGoc ng = svChiTietSanPham.checkNguonGoc(cbo_XuatXu);
+        if (ng == null) {
+            System.out.println("Không tìm thấy giá trị NguonGoc hợp lệ.");
+            hasNull = true;
+        } else {
+            System.out.println("NguonGoc");
+            ctsp.setIDNguonGoc(ng); // Thiết lập giá trị IDNguonGoc
+        }
+
+        // Kiểm tra IDGiamGia
+        GiamGia gg = new GiamGia();
+        if (gg == null) {
+            System.out.println("Không tìm thấy giá trị GiamGia hợp lệ.");
+            hasNull = true;
+        } else {
+            System.out.println("GiamGia");
+            ctsp.setIDGiamGia(gg); // Thiết lập giá trị IDGiamGia
+        }
+
+        // Nếu có bất kỳ giá trị nào là null, ngừng thực hiện và in thông báo lỗi
+        if (hasNull) {
+            System.out.println("Có lỗi trong dữ liệu nhập, không thể thêm sản phẩm.");
+            
+        }
+        link = (String) txt_Anh.getClientProperty("imagepath");
+        // Thiết lập các thuộc tính còn lại
+        ctsp.setTen(txt_TenTrangSuc.getText());
+        ctsp.setSoLuongTonKho(Integer.parseInt(txt_SoLuongDa.getText()));
+        ctsp.setSoLuongDaQuy(Integer.parseInt(txt_SoLuongDa.getText()));
+        ctsp.setGiaCu(Double.parseDouble(txt_GiaBan.getText()));
+        ctsp.setGiaMoi(Double.parseDouble(txt_GiaBan.getText()));
+        ctsp.setHinhAnh(link);
+        ctsp.setTrangThai(true);
+        ctsp.setTrongLuong(Float.parseFloat(txt_TrongLuong.getText()));
+
+        // Gọi phương thức add để chèn dữ liệu vào cơ sở dữ liệu
+        return ctsp;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -240,6 +346,8 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
                 cbo_KiemDinhActionPerformed(evt);
             }
         });
+
+        txt_MaTrangSuc.setEnabled(false);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -471,6 +579,10 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
 
     private void btn_LuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LuuActionPerformed
         // TODO add your handling code here:
+        if(rpctsp.update(addNew(), txt_MaTrangSuc.getText())>0){
+            rpctsp.update(addNew(), txt_MaTrangSuc.getText());
+            JOptionPane.showMessageDialog(null, "Sửa Thành Công");
+        }
     }//GEN-LAST:event_btn_LuuActionPerformed
 
     private void cbo_KiemDinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_KiemDinhActionPerformed
@@ -484,8 +596,7 @@ public final class SuaSanPhamDialog extends javax.swing.JDialog {
 
     private void btn_ChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ChonAnhActionPerformed
         sps.chonAnh(txt_Anh);
-        String link;
-        link = (String) txt_Anh.getClientProperty("imagepath");
+  
         System.out.println(link);
     }//GEN-LAST:event_btn_ChonAnhActionPerformed
 

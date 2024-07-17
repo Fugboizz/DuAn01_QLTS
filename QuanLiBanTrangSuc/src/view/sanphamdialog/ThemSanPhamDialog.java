@@ -7,6 +7,7 @@ package view.sanphamdialog;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.ChatLieu;
 import model.ChiTietSanPham;
 import model.DaQuy;
@@ -169,7 +170,11 @@ public final class ThemSanPhamDialog extends javax.swing.JDialog {
         ctsp.setTrongLuong(Float.parseFloat(txt_TrongLuong1.getText()));
 
         // Gọi phương thức add để chèn dữ liệu vào cơ sở dữ liệu
-        rpctsp.add(ctsp);
+        if (rpctsp.add(ctsp) != 0) {
+            JOptionPane.showMessageDialog(this, "Thêm Thành Công");
+        }else {
+            JOptionPane.showMessageDialog(this, "Thêm Thất Bại");
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -583,6 +588,7 @@ public final class ThemSanPhamDialog extends javax.swing.JDialog {
 
     private void btn_LuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LuuActionPerformed
         addNew();
+        
     }//GEN-LAST:event_btn_LuuActionPerformed
 
     private void cbo_KiemDinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_KiemDinhActionPerformed
