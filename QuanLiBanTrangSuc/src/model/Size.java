@@ -20,6 +20,13 @@ public class Size {
     public Size() {
     }
 
+    public Size(String IDSize, int SoSize) {
+        this.IDSize = IDSize;
+        this.SoSize = SoSize;
+    }
+
+    
+    
     public Size(String IDSize, int SoSize, Date NgayTao, Date NgaySua, boolean TrangThai) {
         this.IDSize = IDSize;
         this.SoSize = SoSize;

@@ -4,6 +4,9 @@
  */
 package view.sanphamdialog;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import model.ChiTietSanPham;
 import view.until.ViewDialog;
 
 public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
@@ -15,13 +18,14 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
         initComponents();
         setTitle("LUXURY STORE");
         setLocationRelativeTo(null);
-        vd.fontBtn(btn_Huy);
+        vd.fontBtn(btn_Dong);
         textFont();
+
     }
 
     void textFont() {
         vd.fontTextThongTin(txt_TenTrangSuc);
-        vd.fontTextThongTin(txt_LoaiTrangSuc);
+        vd.fontTextThongTin(txt_MaTrangSuc);
         vd.fontTextThongTin(txt_TiLeChatLieu);
         vd.fontTextThongTin(txt_LoaiChatLieu);
         vd.fontTextThongTin(txt_Size);
@@ -34,6 +38,40 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
         vd.fontTextThongTin(txt_DonViKiemDinh);
         vd.fontTextThongTin(txt_GiaBan);
         vd.fontTextThongTin(txt_GiaGiam);
+        vd.fontLabel(txt_Anh);
+        vd.fontTextThongTin(txt_LoaiTrangSuc);
+    }
+
+    public void showData(ChiTietSanPham c) {
+        txt_TenTrangSuc.setText(c.getTen());
+        txt_MaTrangSuc.setText(c.getIDChiTietSanPham());
+        txt_LoaiTrangSuc.setText(c.getIDSanPham().getTenSanPham());
+        txt_LoaiChatLieu.setText(c.getIDChatLieu().getTenChatLieu());
+        txt_TiLeChatLieu.setText(String.valueOf(c.getIDChatLieu().getTyLe()));
+        txt_MauSac.setText(String.valueOf(c.getIDChatLieu().getIDMauSac().getChiTietMauSac()));
+        txt_Size.setText(String.valueOf(c.getIDSize().getSoSize()));
+        txt_TenLoaiDa.setText(c.getIDDaQuy().getTenDaQuy());
+        txt_KichThuocDa.setText(String.valueOf(c.getIDDaQuy().getKichThuoc()));
+        txt_SoLuongDa.setText((String.valueOf(c.getSoLuongDaQuy())));
+        txt_TrongLuong.setText(String.valueOf(c.getTrongLuong()));
+        txt_XuatXu.setText(c.getIDNguonGoc().getCongTy());
+        txt_DonViKiemDinh.setText(c.getIDKIemDinh().getDonViKiemDinh());
+        txt_GiaBan.setText(String.valueOf(c.getGiaCu()));
+        txt_GiaGiam.setText(String.valueOf(c.getGiaMoi()));
+        if (c.getIDSanPham().getIDGioiTinh().getGioiTinh().equalsIgnoreCase("Nam")) {
+            rdo_Nam.setSelected(true);
+        }
+        if (c.getIDSanPham().getIDGioiTinh().getGioiTinh().equalsIgnoreCase("Nữ")) {
+            rdo_Nu.setSelected(true);
+        }
+        if (c.getIDSanPham().getIDGioiTinh().getGioiTinh().equalsIgnoreCase("Chung")) {
+            rdo_Chung.setSelected(true);
+        }
+        ImageIcon imageIcon = new ImageIcon(c.getHinhAnh());
+        Image image = imageIcon.getImage(); // Chuyển đổi về đối tượng Image
+        Image scaledImage = image.getScaledInstance(txt_Anh.getWidth() - 2, txt_Anh.getHeight() - 2, Image.SCALE_SMOOTH); // Thay đổi kích thước ảnh
+        imageIcon = new ImageIcon(scaledImage);
+        txt_Anh.setIcon(imageIcon);
     }
 
     @SuppressWarnings("unchecked")
@@ -62,7 +100,7 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
         txt_XuatXu = new javax.swing.JTextField();
         txt_DonViKiemDinh = new javax.swing.JTextField();
         txt_SoLuongDa = new javax.swing.JTextField();
-        txt_LoaiTrangSuc = new javax.swing.JTextField();
+        txt_MaTrangSuc = new javax.swing.JTextField();
         txt_TrongLuong = new javax.swing.JTextField();
         txt_Size = new javax.swing.JTextField();
         txt_LoaiChatLieu = new javax.swing.JTextField();
@@ -75,8 +113,10 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
         rdo_Nam = new javax.swing.JRadioButton();
         rdo_Nu = new javax.swing.JRadioButton();
         rdo_Chung = new javax.swing.JRadioButton();
+        txt_LoaiTrangSuc = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        btn_Huy = new javax.swing.JButton();
+        btn_Dong = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         txt_GiaGiam = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
@@ -92,7 +132,7 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Thông Tin Chi Tiết");
+        jLabel1.setText("Thông Tin Sản Phẩm");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -180,10 +220,10 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
             }
         });
 
-        txt_LoaiTrangSuc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_LoaiTrangSuc.addActionListener(new java.awt.event.ActionListener() {
+        txt_MaTrangSuc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_MaTrangSuc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_LoaiTrangSucActionPerformed(evt);
+                txt_MaTrangSucActionPerformed(evt);
             }
         });
 
@@ -252,6 +292,15 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
         buttonGroup1.add(rdo_Chung);
         rdo_Chung.setText("Chung");
 
+        txt_LoaiTrangSuc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_LoaiTrangSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_LoaiTrangSucActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Mã Trang Sức");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -259,27 +308,25 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_TenTrangSuc, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
                     .addComponent(txt_XuatXu)
                     .addComponent(txt_DonViKiemDinh)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16))
-                                .addGap(214, 214, 214))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(txt_TenLoaiDa)
-                                .addGap(88, 88, 88)))
+                                .addGap(88, 88, 88))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel15))
+                                .addGap(214, 214, 214)))
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_TrongLuong)
+                            .addComponent(txt_KichThuocDa)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel20)
                                     .addComponent(jLabel23))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txt_KichThuocDa)))
+                                .addGap(0, 142, Short.MAX_VALUE))))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel24)
@@ -289,28 +336,34 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
                             .addComponent(txt_TiLeChatLieu, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(txt_LoaiChatLieu)
                             .addComponent(txt_LoaiTrangSuc))
-                        .addGap(88, 88, 88)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_MauSac)
+                            .addComponent(txt_Size)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(rdo_Nam)
-                                .addGap(38, 38, 38)
+                                .addGap(33, 33, 33)
                                 .addComponent(rdo_Nu)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(rdo_Chung))
-                            .addComponent(txt_MauSac)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel19)
                                     .addComponent(jLabel17)
                                     .addComponent(jLabel2))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txt_Size)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(txt_SoLuongDa, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88)
+                        .addComponent(txt_TrongLuong))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_MaTrangSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel21)
                             .addComponent(jLabel18)
-                            .addComponent(txt_SoLuongDa, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txt_TenTrangSuc, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -320,17 +373,22 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_TenTrangSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_MaTrangSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_LoaiTrangSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rdo_Nam)
-                    .addComponent(rdo_Nu)
-                    .addComponent(rdo_Chung))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rdo_Nam)
+                        .addComponent(rdo_Nu)
+                        .addComponent(rdo_Chung))
+                    .addComponent(txt_LoaiTrangSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel17))
@@ -344,8 +402,8 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
                     .addComponent(jLabel24))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_Size, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_TiLeChatLieu, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_TiLeChatLieu, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Size, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
@@ -358,7 +416,7 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jLabel20))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_SoLuongDa, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_TrongLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -369,20 +427,19 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_DonViKiemDinh, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txt_DonViKiemDinh, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        btn_Huy.setBackground(new java.awt.Color(51, 204, 0));
-        btn_Huy.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        btn_Huy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/huy.png"))); // NOI18N
-        btn_Huy.setText("Đóng");
-        btn_Huy.setBorder(null);
-        btn_Huy.addActionListener(new java.awt.event.ActionListener() {
+        btn_Dong.setBackground(new java.awt.Color(51, 204, 0));
+        btn_Dong.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        btn_Dong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete.png"))); // NOI18N
+        btn_Dong.setText("Đóng");
+        btn_Dong.setBorder(null);
+        btn_Dong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_HuyActionPerformed(evt);
+                btn_DongActionPerformed(evt);
             }
         });
 
@@ -391,15 +448,15 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(376, 376, 376)
-                .addComponent(btn_Huy, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(361, 361, 361)
+                .addComponent(btn_Dong, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_Huy, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Dong, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
 
@@ -450,9 +507,9 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -462,11 +519,12 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_GiaGiam, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14))
-                        .addGap(0, 198, Short.MAX_VALUE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 258, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -483,9 +541,9 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_HuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_HuyActionPerformed
+    private void btn_DongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DongActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btn_HuyActionPerformed
+    }//GEN-LAST:event_btn_DongActionPerformed
 
     private void txt_GiaBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_GiaBanActionPerformed
         // TODO add your handling code here:
@@ -507,9 +565,9 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_SoLuongDaActionPerformed
 
-    private void txt_LoaiTrangSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_LoaiTrangSucActionPerformed
+    private void txt_MaTrangSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_MaTrangSucActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_LoaiTrangSucActionPerformed
+    }//GEN-LAST:event_txt_MaTrangSucActionPerformed
 
     private void txt_TrongLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TrongLuongActionPerformed
         // TODO add your handling code here:
@@ -538,6 +596,10 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
     private void rdo_NuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_NuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rdo_NuActionPerformed
+
+    private void txt_LoaiTrangSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_LoaiTrangSucActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_LoaiTrangSucActionPerformed
 
     /**
      * @param args the command line arguments
@@ -580,6 +642,118 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -597,7 +771,7 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Huy;
+    private javax.swing.JButton btn_Dong;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -615,6 +789,7 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -630,6 +805,7 @@ public final class ThongTinChiTietSanPhamDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txt_KichThuocDa;
     private javax.swing.JTextField txt_LoaiChatLieu;
     private javax.swing.JTextField txt_LoaiTrangSuc;
+    private javax.swing.JTextField txt_MaTrangSuc;
     private javax.swing.JTextField txt_MauSac;
     private javax.swing.JTextField txt_Size;
     private javax.swing.JTextField txt_SoLuongDa;

@@ -19,6 +19,8 @@ public class SanPham {
     
     public SanPham() {
     }
+    
+    
 
     public SanPham(String IDSanPham, String TenSanPham, GioiTinh IDGioiTinh, boolean TrangThai) {
         this.IDSanPham = IDSanPham;

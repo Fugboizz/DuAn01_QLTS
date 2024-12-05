@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.ChiTietSanPham;
 import model.GioiTinh;
 import model.SanPham;
 import until.jdbc;
@@ -20,7 +19,7 @@ import until.jdbc;
  * @author HUNGpYN
  */
 public class SanPhamRepository implements SanPhamInterface {
-    private List<SanPham> listsp = new ArrayList<>();
+
     private Connection con = null;
     private PreparedStatement pre = null;
     private ResultSet res = null;
@@ -28,39 +27,73 @@ public class SanPhamRepository implements SanPhamInterface {
 
     @Override
     public List<SanPham> getAll() {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-
-//        sql = "select * from v_SanPhamChiTiet";
-//        try {
-//            con = jdbc.getConnection();
-//            pre = con.prepareStatement(sql);
-//            res = pre.executeQuery();
-//            while(res.next()){
-//                ChiTietSanPham ctsp = new ChiTietSanPham();
-//                ctsp.setTen(res.getString(2));
-//                SanPham sp = new SanPham(res.getString(1), ctsp.toString(), res.getString(3),true);
-//                listsp.add(sp);
-//            }
-//            return listsp;
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return new ArrayList<>();
-//        }
+        List<SanPham> sanPham = new ArrayList<>();
+        sql = "SELECT * FROM sanpham AS s JOIN GioiTinh AS g ON s.IDGioiTinh = g.IDGioiTinh WHERE TrangThai = 1";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                SanPham sp = new SanPham();
+                sp.setIDSanPham(res.getString("IDSanPham"));
+                sp.setTenSanPham(res.getString("TenSanPham"));
+                sp.setTrangThai(res.getBoolean("TrangThai"));
+                GioiTinh gt = new GioiTinh(res.getString("IDGioiTinh"), res.getString("GioiTinh"));
+                sp.setIDGioiTinh(gt);
+                sanPham.add(sp);
+            }
+            return sanPham;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
-    public int creat() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int creat(SanPham sp) {
+        sql = "INSERT INTO SanPham(TenSanPham, IDGioiTinh, TrangThai) VALUES(?,?,?)";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, sp.getTenSanPham());
+            pre.setString(2, sp.getIDGioiTinh().getIDGioiTinh());
+            pre.setBoolean(3, sp.isTrangThai());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
-    public int update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int update(SanPham sp) {
+        sql = "UPDATE SanPham SET TenSanPham = ?, IDGioiTinh = ?, TrangThai = ?   WHERE IDSanPham = ?";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, sp.getTenSanPham());
+            pre.setString(2, sp.getIDGioiTinh().getIDGioiTinh());
+            pre.setBoolean(3, sp.isTrangThai());
+            pre.setString(4, sp.getIDSanPham());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
-    public int delete() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int delete(SanPham sp) {
+        sql = "UPDATE SanPham SET TrangThai = 0   WHERE IDSanPham = ?";
+        try {
+            con = jdbc.getConnection();
+            pre = con.prepareStatement(sql);
+            pre.setString(1, sp.getIDSanPham());
+            return pre.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
 }

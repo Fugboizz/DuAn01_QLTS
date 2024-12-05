@@ -13,8 +13,7 @@ import model.SanPham;
  */
 public interface SanPhamInterface {
     public List<SanPham> getAll();
-    public int creat();
-    public int update();
-    public int delete();
-   
+    public int creat(SanPham sp);
+    public int update(SanPham sp);
+    public int delete(SanPham sp);
 }

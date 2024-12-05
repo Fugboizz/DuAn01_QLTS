@@ -19,6 +19,7 @@ import view.sanphamdialog.ThemSanPhamDialog;
 import view.sanphamdialog.ThongTinChiTietSanPhamDialog;
 import view.sanphamdialog.XoaSanPhamDialog;
 import view.until.GiaoDienJpanel;
+import view.until.SanPhamUntil;
 
 /**
  *
@@ -28,17 +29,25 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
 
     private List<ChiTietSanPham> ctList = new ArrayList<>();
     private repoChiTietSanPham rpctsp = new repoChiTietSanPham();
-    private ChiTietSanPham ctsp = new ChiTietSanPham();
     private Main main;
     private model.GiaoDien.SanPham mdsp = new SanPham();
     private GiaoDienService gds = new GiaoDienService();
     GiaoDienJpanel gd = new GiaoDienJpanel();
+    private SanPhamUntil spu = new SanPhamUntil();
     private DefaultTableModel model;
 
     public GiaoDienSanPhamJPanel() {
         initComponents();
         gd.sizeButton(btn_Xoa);
         fillToTable();
+    }
+// Làm Mới buttongroup;
+
+    void lamMoiGroup() {
+        txtTimKiem.setText("");
+        spu.lamMoiGbo(buttonGroup1);
+        spu.lamMoiGbo(buttonGroup2);
+        spu.lamMoiGbo(buttonGroup3);
     }
 
     void fillToTable() {
@@ -53,7 +62,7 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
 
     }
 
-    void fillToCheck() {
+    void fillToCheck(model.GiaoDien.SanPham mdsp) {
         ctList = rpctsp.getAllWithConditional(mdsp);
         String hienthi[] = {"Mã Trang Sức", "Loại Sản Phẩm", "Tên Trang Sức", "Giá Giảm", "Tồn Kho", "Giới Tính", "Trạng Thái"};
         model = new DefaultTableModel(hienthi, 0);
@@ -63,7 +72,15 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
         }
         tblThongTinChiTietSanPham.setModel(model);
     }
-
+    // Lấy mã trang sức ở bảng table
+        public String getMaTrangSuc() {
+        int i = tblThongTinChiTietSanPham.getSelectedRow();
+        if (i >= 0) {
+            String mt = (String) tblThongTinChiTietSanPham.getValueAt(i, 0);
+            return mt;
+        }
+        return null;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -100,6 +117,7 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
         rdoChung = new javax.swing.JRadioButton();
         rdoGiamGiaCo = new javax.swing.JRadioButton();
         rdoGiamGiaKhon = new javax.swing.JRadioButton();
+        btn_LamMoi = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblThongTinChiTietSanPham = new javax.swing.JTable();
@@ -345,27 +363,41 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
             }
         });
 
+        btn_LamMoi.setBackground(new java.awt.Color(0, 153, 255));
+        btn_LamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/reset.png"))); // NOI18N
+        btn_LamMoi.setText("Làm Mới");
+        btn_LamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_LamMoiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(24, 24, 24)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rdoGiamGiaCo)
-                            .addComponent(rdoConHang)
-                            .addComponent(rdoNam)
-                            .addComponent(rdoHethang)
-                            .addComponent(rdoNu)
-                            .addComponent(rdoChung)
-                            .addComponent(rdoGiamGiaKhon))))
-                .addContainerGap(88, Short.MAX_VALUE))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rdoGiamGiaCo)
+                                    .addComponent(rdoConHang)
+                                    .addComponent(rdoNam)
+                                    .addComponent(rdoHethang)
+                                    .addComponent(rdoNu)
+                                    .addComponent(rdoChung)
+                                    .addComponent(rdoGiamGiaKhon)))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(btn_LamMoi)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,7 +422,9 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
                 .addComponent(rdoGiamGiaCo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rdoGiamGiaKhon)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_LamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
 
         tblThongTinChiTietSanPham.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
@@ -481,12 +515,15 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
     private void btn_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaActionPerformed
         // TODO add your handling code here:
         SuaSanPhamDialog suaDialog = new SuaSanPhamDialog(main, true);
+        suaDialog.showDuLieu(rpctsp.getChiTietSanPham(getMaTrangSuc()));
         gds.clicked(suaDialog);
     }//GEN-LAST:event_btn_SuaActionPerformed
 
     private void btn_ChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ChiTietActionPerformed
         // TODO add your handling code here:
         ThongTinChiTietSanPhamDialog ttct = new ThongTinChiTietSanPhamDialog(main, true);
+        ttct.showData(rpctsp.getChiTietSanPham(getMaTrangSuc()));
+        
         gds.clicked(ttct);
     }//GEN-LAST:event_btn_ChiTietActionPerformed
 
@@ -503,6 +540,7 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
     private void btn_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XoaActionPerformed
         // TODO add your handling code here:
         XoaSanPhamDialog xoaDialog = new XoaSanPhamDialog(main, true);
+        xoaDialog.getDuLieu(rpctsp.getChiTietSanPham(getMaTrangSuc()));
         gds.clicked(xoaDialog);
     }//GEN-LAST:event_btn_XoaActionPerformed
 
@@ -517,38 +555,64 @@ public class GiaoDienSanPhamJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cbo_TimKiemActionPerformed
 
     private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
+        // Khởi tạo đối tượng SanPham
+        model.GiaoDien.SanPham mdsp = new SanPham();
+
+        // Kiểm tra trạng thái sản phẩm
         if (rdoConHang.isSelected()) {
-            mdsp.setTrangThai(true);
+            mdsp.setTrangThai(1);
         } else if (rdoHethang.isSelected()) {
-            mdsp.setTrangThai(false);
+            mdsp.setTrangThai(0);
+        } else {
+            mdsp.setTrangThai(-1); // Hoặc một giá trị mặc định khác
         }
+        System.out.println(mdsp.getTrangThai());
 
+        // Kiểm tra giới tính sản phẩm
         if (rdoNam.isSelected()) {
-            mdsp.setGioiTinh(true);
+            mdsp.setGioiTinh(1);
         } else if (rdoNu.isSelected()) {
-            mdsp.setGioiTinh(false);
+            mdsp.setGioiTinh(0);
+        } else {
+            mdsp.setGioiTinh(-1); // Hoặc một giá trị mặc định khác
         }
+        System.out.println(mdsp.getGioiTinh());
 
+        // Kiểm tra trạng thái giảm giá
         if (rdoGiamGiaCo.isSelected()) {
-            mdsp.setGiamGia(true);
+            mdsp.setGiamGia(1);
         } else if (rdoGiamGiaKhon.isSelected()) {
-            mdsp.setGiamGia(false);
+            mdsp.setGiamGia(0);
+        } else {
+            mdsp.setGiamGia(-1); // Hoặc một giá trị mặc định khác
         }
+        System.out.println(mdsp.getGiamGia());
 
+        // Kiểm tra sản phẩm tìm kiếm
         if (cbo_TimKiem.getSelectedIndex() == 1) {
             mdsp.setSanPham(txtTimKiem.getText());
-        }else if(cbo_TimKiem.getSelectedIndex() == 0){
+        } else if (cbo_TimKiem.getSelectedIndex() == 0) {
             mdsp.setSanPham("");
         }
-        ctList.clear(); // Clear current list
-        ctList.addAll(rpctsp.getAllWithConditional(mdsp)); 
-        fillToCheck(); 
+        System.out.println(mdsp.getSanPham());
+
+        // Xóa danh sách hiện tại và cập nhật danh sách kiểm tra
+        ctList.clear();
+        fillToCheck(mdsp);
     }//GEN-LAST:event_btn_TimKiemActionPerformed
+
+    private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
+        // TODO add your handling code here:
+        lamMoiGroup();
+        ctList.clear();
+        fillToTable();
+    }//GEN-LAST:event_btn_LamMoiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_ChiTiet;
     private javax.swing.JButton btn_Excel;
+    private javax.swing.JButton btn_LamMoi;
     private javax.swing.JButton btn_Sua;
     private javax.swing.JButton btn_Them;
     private javax.swing.JButton btn_ThuocTinh;

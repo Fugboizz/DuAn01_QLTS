@@ -21,29 +21,9 @@ public class DangNhapView extends javax.swing.JFrame {
         dn.customizeButton(btn_DangNhap, 30);
         lbl_enable.setVisible(false);
         txt_MatKhau.setEchoChar((char) 8226);
+        
     }
 
-//    public boolean checkRole() {
-//        char[] password = txt_MatKhau.getPassword();
-//        String matKhau = new String(password);
-//        TaiKhoan tk = dnp.checkTaiKhoan(txt_TaiKhoan.getText(), matKhau);
-//        return role = tk.isChucVu();
-//    }
-//
-//    public String checkName() {
-//        char[] password = txt_MatKhau.getPassword();
-//        String matKhau = new String(password);
-//        TaiKhoan tk = dnp.checkTaiKhoan(txt_TaiKhoan.getText(), matKhau);
-//        return name = tk.getHoTen();
-//    }
-//
-//    public boolean isRole() {
-//        return role;
-//    }
-//
-//    public String getNameDN() {
-//        return name;
-//    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

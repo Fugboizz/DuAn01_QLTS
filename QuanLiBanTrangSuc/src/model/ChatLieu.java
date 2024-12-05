@@ -22,6 +22,15 @@ public class ChatLieu {
     public ChatLieu() {
     }
 
+    public ChatLieu(String IDChatLieu, String TenChatLieu, float TyLe, MauSac IDMauSac) {
+        this.IDChatLieu = IDChatLieu;
+        this.TenChatLieu = TenChatLieu;
+        this.TyLe = TyLe;
+        this.IDMauSac = IDMauSac;
+    }
+    
+    
+
     public ChatLieu(String IDChatLieu, String TenChatLieu, float TyLe, MauSac IDMauSac, Date NgayTao, Date NgaySua, boolean TrangThai) {
         this.IDChatLieu = IDChatLieu;
         this.TenChatLieu = TenChatLieu;
